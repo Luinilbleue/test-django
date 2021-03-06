@@ -2,22 +2,32 @@
 
 {% block content %}
 
-<h1>Bienvenue</h1>
+<div class="col-md-12 my-5 text-center">
+  <h1>Bienvenue sur le blog de Charly</h1>
+
+<p>Ceci est un blog test en Django</p>
+<p>Cette page affiche les 4 derniers articles parus sur blog</p>
+</div>
 
 {%for post in posts%}
-<div class="container">
-  <div class="row g-0 justify-content-md-center">
-    <h2>
-      <a href="http://localhost:8000/{{post.slug}}">{{post.title}}</a>
-    </h2>
-    <p>{{post.ctime | date:'d/m/Y à H:m'}}</p>
-    <img style="height: 20vh; width: 100%; object-fit: cover; object-position: 50% 20%;" src="{{post.image}}" alt="">
-    <span class="text-italic">{{post.short_description}}</span>
-    <br>
-    <br>
-    <br>
+<div class="card" style="width: 18rem;">
+  <img style="height: 20vh; width: 100%; object-fit: cover; object-position: 50% 20%;" src="{{post.image}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{post.title}}</h5>
+    <p class="m-0">publié le {{post.ctime | date:'d/m/Y à H:m'}}</p>
+    <p class="card-text ">{{post.short_description}}</p>
   </div>
-</div>  
+  <div class=" m-2 d-flex align-items-bottom">
+    <a href="http://localhost:8000/{{post.slug}}" class="btn btn-primary">Lire plus...</a>
+  </div>
+</div>
+
 {%endfor%}
+
+<div class="row">
+  <div class="col-md-12 d-flex mt-5 justify-content-center">
+    <a class="btn btn-success" href="http://localhost:8000/list">Voir tous les articles</a>
+  </div>
+</div>
 
 {% endblock %}

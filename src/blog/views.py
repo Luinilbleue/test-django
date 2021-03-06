@@ -7,7 +7,7 @@ def home(request):
     # defining template
     template = 'index.html'
     # getting data
-    last_posts = Post.objects.order_by('-ctime')[:5]
+    last_posts = Post.objects.order_by('-ctime')[:4]
     # ok
     kw['posts'] = last_posts
     return render(request, template, kw)
