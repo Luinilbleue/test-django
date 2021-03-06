@@ -1,0 +1,35 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+
+<h1>Tous les articles</h1>
+
+<div class="row g-0">
+  <div class="col-md-12">
+    <ul class="list-unstyled">
+      {%for post in posts%}
+      <li>
+        <a href="http://localhost:8000/{{post.slug}}">
+          <div class="row g-0">
+            <div class="col-md-1 border p-0">
+              <img style="width: 150px; height: 20vh; object-fit: cover; object-position: 50% 50%;" src="{{post.image}}"
+                alt="">
+            </div>
+            <div class="col-md-1 border d-flex align-items-center">
+              {{post.title}}
+            </div>
+            <div class="col-md-2 border d-flex align-items-center">
+              {{post.ctime | date:'d/m/Y'}}
+            </div>
+            <div class="col-md-5 border d-flex align-items-center">
+              {{post.short_description}}
+            </div>
+          </div>
+        </a>
+      </li>
+      {%endfor%}
+    </ul>
+  </div>
+</div>
+
+{% endblock %}

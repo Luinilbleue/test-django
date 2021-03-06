@@ -1,0 +1,23 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+
+<h1>Bienvenue</h1>
+
+{%for post in posts%}
+<div class="container">
+  <div class="row g-0 justify-content-md-center">
+    <h2>
+      <a href="http://localhost:8000/{{post.slug}}">{{post.title}}</a>
+    </h2>
+    <p>{{post.ctime | date:'d/m/Y à H:m'}}</p>
+    <img style="height: 20vh; width: 100%; object-fit: cover; object-position: 50% 20%;" src="{{post.image}}" alt="">
+    <span class="text-italic">{{post.short_description}}</span>
+    <br>
+    <br>
+    <br>
+  </div>
+</div>  
+{%endfor%}
+
+{% endblock %}

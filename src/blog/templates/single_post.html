@@ -1,0 +1,61 @@
+{% extends "base_template.html" %}
+
+{% block content %}
+
+<div class="row g-0">
+  <div class="col-md-12">
+
+    <div class="row mx-5">
+      <div class="col-md-12">
+        <h1>{{post.title}}</h1>
+        {% with comments.count as comments_counter %}
+        <p class="font-italic">
+          {{post.ctime | date:'d/m/Y à H:m'}} - {{comments_counter}} commentaires
+        </p>
+        {% endwith %}
+      </div>
+    </div>
+
+    <div class="row g-0">
+      <div class="col-md-12 border">
+        <img style="width: 100%; height: 20vh; object-fit: cover; object-position: 0 50%;" src="{{post.image}}" alt="">
+      </div>
+    </div>
+
+    <div class="row mx-5 g-0">
+      <div class="col-md-12">
+        <em>
+          {{post.short_description}}
+        </em>
+        <p>
+          {{post.content}}
+        </p>
+      </div>
+    </div>
+    <hr>
+
+    <div class="row g-0">
+      <div class="col-md-12">
+        {%for comment in comments%}
+        <p>{{comment.content}}</p>
+        <p>Commentaire posté le {{comment.ctime | date:'d/m/Y à H:m'}}</p>
+        {% empty %}
+        <p>Pas de commentaire sur cet article.</p>
+        <p>Soyez-le premier a écrire un commentaire.</p>
+        {%endfor%}
+      </div>
+    </div>
+
+    <div class="row g-0">
+      <div class="col-md-12">
+        <form class="form-group" method="POST">
+          {{comment_form.as_p}}
+          {% csrf_token %}
+          <button class="btn btn-primary" type="submit">Envoyer</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
