@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from .models import Post, Comment
 from .forms import NewCommentForm
+from rest_framework import viewsets
+from .serializers import PostSerializer, CommentSerializer
 
 def home(request):
     kw = {}
@@ -18,7 +20,7 @@ def list_page(request):
     #defining template
     template = 'list_page.html'
     # getting data
-    all_posts = Post.objects.order_by('-ctime').all()
+    all_posts = Post.objects.all().order_by('-ctime')
     # ok
     kw['posts'] = all_posts
     return render(request, template, kw)
@@ -48,3 +50,10 @@ def single_post(request, post):
     kw['comments'] = comments
     kw['comment_form'] = comment_form
     return render(request, template, kw)
+
+
+
+class AllPostsViewSet(viewsets.ModelViewSet):
+
+    queryset = Post.objects.all().order_by('-ctime')
+    serializer_class = PostSerializer
