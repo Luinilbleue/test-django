@@ -7,9 +7,13 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
         model = Post
         fields = ['ctime', 'title', 'short_description', 'content',
                     'image', 'slug']
+        lookup_field = 'slug'
+        extra_kwargs = {
+            'url': {'lookup_field': 'slug'}
+        }
 
 
-
+# not in use at the moment
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Comment

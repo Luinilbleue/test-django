@@ -6,6 +6,7 @@ app_name = 'blog'
 
 router = routers.DefaultRouter()
 router.register('posts', views.AllPostsViewSet)
+router.register('post', views.PostViewSet)
 
 urlpatterns = [
     path('', views.home, name="homepage"),

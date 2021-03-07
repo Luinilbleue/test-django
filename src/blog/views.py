@@ -57,3 +57,11 @@ class AllPostsViewSet(viewsets.ModelViewSet):
 
     queryset = Post.objects.all().order_by('-ctime')
     serializer_class = PostSerializer
+
+
+
+class PostViewSet(viewsets.ModelViewSet):
+
+    queryset = Post.objects.all().order_by('-ctime')
+    serializer_class = PostSerializer
+    lookup_field = 'slug'
