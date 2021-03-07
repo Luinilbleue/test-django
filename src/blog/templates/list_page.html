@@ -9,7 +9,7 @@
 <div class="row g-0">
   <div class="col-md-12">
       {%for post in posts%}
-      <a class="text-decoration-none " href="http://localhost:8000/{{post.slug}}">
+      <a class="text-decoration-none " href="http://localhost:8000/post/{{post.slug}}">
         <div class="card mb-3">
           <img style="width: 100%; height: 20vh; object-fit: cover; object-position: 50% 20%;" src="{{post.image}}" class="card-img-top" alt="...">
           <div class="card-body">

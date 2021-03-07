@@ -23,6 +23,9 @@
         <p>{{post.content}}</p>
       </div>
     </div>
+    <div class="container text-center mb-2">
+      <img src="{{post.image}}" class="img-fluid" alt="...">
+    </div>
     {% with comments.count as comments_counter %}
         <p class="fst-italic">
           publié le {{post.ctime | date:'d/m/Y à H:m'}} - {{comments_counter}} commentaires
