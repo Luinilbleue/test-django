@@ -5,6 +5,7 @@ from django.urls import reverse
 class Post(models.Model):
 
     # Fields
+    # each field match a key in the DB
     title = models.CharField(max_length=64)
     ctime = models.DateTimeField(default=timezone.now)
     short_description = models.TextField(max_length=256)
@@ -21,6 +22,7 @@ class Post(models.Model):
 class Comment(models.Model):
 
     # Fields
+    # each field match a key in the DB
     ctime = models.DateTimeField(default=timezone.now)
     content = models.TextField(max_length=256)
     linked_post = models.ForeignKey(
