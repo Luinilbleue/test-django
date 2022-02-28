@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Post, Comment
 
-
+#serializer pour la class Post
 class PostSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Post
@@ -14,6 +14,7 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
 
 
 # not in use at the moment
+#serializer pour la class Comment
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Comment
